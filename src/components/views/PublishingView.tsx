@@ -228,6 +228,50 @@ export const PublishingView: React.FC<Props> = ({ project }) => {
         </div>
       </div>
 
+      {/* CRITICAL WHITE SCREEN FIX CALLOUT BANNER */}
+      <div className="bg-gradient-to-r from-sky-950/70 via-slate-900 to-indigo-950/70 border border-sky-500/30 rounded-3xl p-6 shadow-xl space-y-4">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <span className="inline-block px-2.5 py-0.5 rounded-full bg-sky-500/20 text-sky-300 text-[10px] font-bold border border-sky-500/30">
+              CRITICAL GITHUB PAGES RESOLUTION
+            </span>
+            <h3 className="text-base font-bold text-white">
+              Why was your site displaying a blank white screen?
+            </h3>
+            <p className="text-xs text-slate-300 max-w-2xl leading-relaxed">
+              In your GitHub repository, <code>index.html</code> was pointing to <code>/src/main.tsx</code> (a development TypeScript file) instead of compiled production JavaScript, and GitHub Pages does not run <code>server.ts</code>. Browsers cannot execute uncompiled <code>.tsx</code> files, causing a silent crash before anything can render.
+            </p>
+          </div>
+
+          <button
+            onClick={() => {
+              addLog('Downloading pre-compiled production (dist) ZIP...');
+              window.location.href = '/api/download-production-bundle';
+            }}
+            className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold text-xs shadow-xl shadow-sky-500/25 transition active:scale-95 shrink-0"
+          >
+            <Archive className="w-4 h-4" />
+            <span>Download Pre-Compiled (dist) ZIP</span>
+          </button>
+        </div>
+
+        <div className="bg-slate-950/90 rounded-2xl p-4 border border-slate-800 text-xs text-slate-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+            <span>This ZIP contains the <strong>already-compiled production JavaScript &amp; CSS</strong>. Extract and upload directly to GitHub root—no build commands needed!</span>
+          </div>
+          <a
+            href="https://github.com/Saipratap09-blip/Own-created-website-to-free-hosting"
+            target="_blank"
+            rel="noreferrer"
+            className="text-sky-400 hover:text-sky-300 flex items-center gap-1 font-semibold whitespace-nowrap text-[11px]"
+          >
+            <span>Open Your GitHub Repo</span>
+            <ExternalLink className="w-3 h-3" />
+          </a>
+        </div>
+      </div>
+
       {/* Deployment Modes Switcher */}
       <div className="flex gap-2 border-b border-slate-800 pb-2">
         <button

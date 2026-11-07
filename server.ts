@@ -1,5 +1,7 @@
 import express from 'express';
 import path from 'path';
+import fs from 'fs';
+import JSZip from 'jszip';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import { GoogleGenAI, Type } from '@google/genai';
@@ -212,6 +214,79 @@ app.post('/api/github/deploy', async (req, res) => {
     });
   } catch (err: unknown) {
     res.status(500).json({ error: 'GitHub deployment failed: ' + ((err as Error)?.message || 'Unknown error') });
+  }
+});
+
+// Download Pre-Compiled Production Bundle (.zip containing dist files for instant GitHub Pages deployment)
+app.get('/api/download-production-bundle', async (req, res) => {
+  try {
+    const distPath = path.resolve(__dirname, 'dist');
+    if (!fs.existsSync(distPath)) {
+      return res.status(404).json({ error: 'Production dist directory not found. Please build first.' });
+    }
+
+    const zip = new JSZip();
+
+    async function addDirToZip(dir: string, zipFolder: JSZip) {
+      const entries = await fs.promises.readdir(dir);
+      for (const entry of entries) {
+        const fullPath = path.join(dir, entry);
+        const stat = await fs.promises.stat(fullPath);
+        if (stat.isDirectory()) {
+          const subFolder = zipFolder.folder(entry);
+          if (subFolder) await addDirToZip(fullPath, subFolder);
+        } else {
+          const content = await fs.promises.readFile(fullPath);
+          zipFolder.file(entry, content);
+        }
+      }
+    }
+
+    await addDirToZip(distPath, zip);
+
+    // Ensure .nojekyll, 404.html, and deployment instructions are in root of zip
+    zip.file('.nojekyll', '');
+    if (fs.existsSync(path.join(distPath, 'index.html'))) {
+      const indexContent = await fs.promises.readFile(path.join(distPath, 'index.html'));
+      zip.file('404.html', indexContent);
+    }
+
+    zip.file(
+      'DEPLOYMENT-INSTRUCTIONS.txt',
+      `========================================================================
+SaipratapS❤️C — Pre-Compiled Production Release for GitHub Pages
+Target: https://saipratap09-blip.github.io/Own-created-website-to-free-hosting/
+========================================================================
+
+WHY THIS FIXES THE BLANK WHITE SCREEN:
+In your original repository, index.html referenced:
+  <script type="module" src="/src/main.tsx"></script>
+Browsers cannot run uncompiled .tsx TypeScript files directly.
+This package contains the pre-compiled production JavaScript and CSS
+with RELATIVE paths (./assets/...) that load seamlessly anywhere!
+
+HOW TO DEPLOY (takes 30 seconds):
+1. Extract all files from this zip.
+2. In your GitHub repository:
+   https://github.com/Saipratap09-blip/Own-created-website-to-free-hosting
+3. Drag and drop all extracted files (index.html, assets/, .nojekyll, 404.html)
+   directly into the root of the "main" branch.
+4. Go to: Settings > Pages.
+   - Source: Deploy from a branch
+   - Branch: main, Folder: / (root)
+   - Click Save.
+5. Visit your live site:
+   https://saipratap09-blip.github.io/Own-created-website-to-free-hosting/
+========================================================================
+`
+    );
+
+    const buffer = await zip.generateAsync({ type: 'nodebuffer' });
+    res.setHeader('Content-Type', 'application/zip');
+    res.setHeader('Content-Disposition', 'attachment; filename="Own-created-website-to-free-hosting-dist.zip"');
+    res.send(buffer);
+  } catch (err: unknown) {
+    res.status(500).json({ error: 'Failed to generate production bundle: ' + ((err as Error)?.message || 'Unknown error') });
   }
 });
 

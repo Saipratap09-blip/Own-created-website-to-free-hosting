@@ -152,8 +152,8 @@ window.addEventListener("unhandledrejection", (event) => {
   };
 
   const handleDownloadFixedPackage = async () => {
-    const blob = await exportDeployableZip(project, 'OWN-Free-hosting-and-create-website', 'saipratap-ux');
-    downloadBlob(blob, 'OWN-Free-hosting-and-create-website-FIXED.zip');
+    const blob = await exportDeployableZip(project, 'Own-created-website-to-free-hosting', 'Saipratap09-blip');
+    downloadBlob(blob, 'Own-created-website-to-free-hosting-FIXED.zip');
   };
 
   return (
@@ -170,17 +170,29 @@ window.addEventListener("unhandledrejection", (event) => {
             Blank-Screen Fixer &amp; GitHub Pages Shield
           </h1>
           <p className="text-xs sm:text-sm text-slate-400">
-            Diagnose and eliminate the technical causes of the blank white screen observed on <code className="text-sky-300">saipratap-ux.github.io/OWN-Free-hosting-and-create-website/</code>.
+            Diagnose and eliminate the technical causes of the blank white screen observed on <code className="text-sky-300">saipratap09-blip.github.io/Own-created-website-to-free-hosting/</code>.
           </p>
         </div>
 
-        <button
-          onClick={handleDownloadFixedPackage}
-          className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-bold text-xs shadow-lg shadow-emerald-500/20 transition active:scale-95 shrink-0"
-        >
-          <Archive className="w-4 h-4" />
-          <span>Download 100% Fixed ZIP Package</span>
-        </button>
+        <div className="flex flex-wrap gap-2.5 shrink-0">
+          <button
+            onClick={() => {
+              window.location.href = '/api/download-production-bundle';
+            }}
+            className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold text-xs shadow-lg shadow-sky-500/25 transition active:scale-95"
+          >
+            <Archive className="w-4 h-4" />
+            <span>Download Pre-Compiled (dist) ZIP</span>
+          </button>
+
+          <button
+            onClick={handleDownloadFixedPackage}
+            className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs border border-slate-700 transition active:scale-95"
+          >
+            <FileCode className="w-4 h-4 text-emerald-400" />
+            <span>Download Project Source ZIP</span>
+          </button>
+        </div>
       </div>
 
       {/* Tabs */}
