@@ -91,7 +91,7 @@ export function generateSpa404Html(): string {
 </html>`;
 }
 
-export function generateReadme(project: Project, repoName = 'OWN-Free-hosting-and-create-website', owner = 'saipratap-ux'): string {
+export function generateReadme(project: Project, repoName = 'Own-created-website-to-free-hosting', owner = 'Saipratap09-blip'): string {
   return `# ${project.name}
 
 > Built & Recovered via **SaipratapS❤️C Free Hosting & Website Creation Platform**
@@ -140,7 +140,7 @@ git push origin main
 `;
 }
 
-export async function exportDeployableZip(project: Project, repoName = 'OWN-Free-hosting-and-create-website', owner = 'saipratap-ux'): Promise<Blob> {
+export async function exportDeployableZip(project: Project, repoName = 'Own-created-website-to-free-hosting', owner = 'Saipratap09-blip'): Promise<Blob> {
   const zip = new JSZip();
 
   // Root files

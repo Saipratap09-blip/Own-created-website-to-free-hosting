@@ -134,7 +134,7 @@ body { background: #090b10; color: #f1f5f9; line-height: 1.6; }`,
 
   const handleQuickExport = async () => {
     if (!activeProject) return;
-    const blob = await exportDeployableZip(activeProject, 'OWN-Free-hosting-and-create-website', 'saipratap-ux');
+    const blob = await exportDeployableZip(activeProject, 'Own-created-website-to-free-hosting', 'Saipratap09-blip');
     downloadBlob(blob, `${activeProject.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}-github-pages.zip`);
   };
 

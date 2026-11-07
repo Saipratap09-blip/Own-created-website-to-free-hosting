@@ -22,14 +22,14 @@ export function getStoredProjects(): Project[] {
   const defaultProject: Project = {
     id: 'own-free-hosting-main',
     name: 'OWN Free Hosting Portal',
-    description: 'Fixed & upgraded edition of saipratap-ux.github.io/OWN-Free-hosting-and-create-website with blank-screen shield.',
+    description: 'Fixed & upgraded edition of saipratap09-blip.github.io/Own-created-website-to-free-hosting with zero-blank shield.',
     category: 'business',
     html: TEMPLATES[0].html,
     css: TEMPLATES[0].css,
     js: TEMPLATES[0].js,
     createdAt: Date.now() - 86400000,
     updatedAt: Date.now(),
-    publishedUrl: 'https://saipratap-ux.github.io/OWN-Free-hosting-and-create-website/',
+    publishedUrl: 'https://saipratap09-blip.github.io/Own-created-website-to-free-hosting/',
     version: 2,
   };
 

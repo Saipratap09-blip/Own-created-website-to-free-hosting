@@ -12,17 +12,17 @@
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- PWA & Mobile Web App Meta -->
-    <link rel="manifest" href="/manifest.json" />
+    <!-- PWA & Mobile Web App Meta (Using relative paths for GitHub Pages subpath compatibility) -->
+    <link rel="manifest" href="./manifest.json" />
     <meta name="theme-color" content="#0284c7" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="SaipratapSC" />
-    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
-    <link rel="apple-touch-icon" href="/icon.svg" />
+    <link rel="icon" type="image/svg+xml" href="./icon.svg" />
+    <link rel="apple-touch-icon" href="./icon.svg" />
 
-    <!-- Blank Screen Prevention: Fallback CSS for Pre-Boot Screen -->
+    <!-- Pre-Boot Loader Style with Fail-Safe Auto-Dismiss -->
     <style>
       #app-preloader {
         position: fixed;
@@ -35,16 +35,16 @@
         z-index: 99999;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         color: #e2e8f0;
-        transition: opacity 0.4s ease, visibility 0.4s ease;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
       }
       .preloader-glow {
-        width: 68px;
-        height: 68px;
+        width: 64px;
+        height: 64px;
         position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 20px;
+        margin-bottom: 16px;
       }
       .preloader-spinner {
         position: absolute;
@@ -53,10 +53,10 @@
         border-radius: 50%;
         border: 3px solid rgba(56, 189, 248, 0.15);
         border-top-color: #38bdf8;
-        animation: spin 0.9s linear infinite;
+        animation: spin 0.8s linear infinite;
       }
       .preloader-heart {
-        font-size: 26px;
+        font-size: 24px;
         animation: pulse 1.2s ease-in-out infinite;
       }
       @keyframes spin {
@@ -64,56 +64,89 @@
       }
       @keyframes pulse {
         0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.15); }
+        50% { transform: scale(1.12); }
       }
       .preloader-title {
-        font-size: 1.25rem;
-        font-weight: 700;
+        font-size: 1.2rem;
+        font-weight: 800;
         letter-spacing: -0.02em;
-        margin-bottom: 6px;
+        margin-bottom: 4px;
       }
       .preloader-sub {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         color: #94a3b8;
+      }
+      #preloader-fail-btn {
+        display: none;
+        margin-top: 16px;
+        padding: 6px 14px;
+        background: #1e293b;
+        color: #94a3b8;
+        border: 1px solid #334155;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        cursor: pointer;
+      }
+      #preloader-fail-btn:hover {
+        color: #fff;
+        background: #334155;
       }
       #preloader-error-box {
         display: none;
-        max-width: 500px;
-        margin: 20px 16px 0;
-        padding: 14px 18px;
+        max-width: 480px;
+        margin: 16px 16px 0;
+        padding: 12px 16px;
         background: #1e1115;
         border: 1px solid #e11d48;
         border-radius: 10px;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         color: #fecdd3;
         text-align: center;
       }
     </style>
   </head>
   <body class="bg-slate-950 text-slate-100 antialiased selection:bg-sky-500 selection:text-white">
-    <!-- Branded Loading Screen (Pre-Boot Shield to Prevent White Screen) -->
+    <!-- Branded Loading Screen (Guaranteed Auto-Dismiss Fail-Safe to Prevent Getting Stuck) -->
     <div id="app-preloader">
       <div class="preloader-glow">
         <div class="preloader-spinner"></div>
         <div class="preloader-heart">❤️</div>
       </div>
       <div class="preloader-title">SaipratapS❤️C</div>
-      <div class="preloader-sub">Initializing website builder &amp; hosting engine...</div>
+      <div class="preloader-sub">Loading Website Engine...</div>
+      <button id="preloader-fail-btn" onclick="dismissPreloaderNow()">Enter Website</button>
       <div id="preloader-error-box"></div>
     </div>
 
     <div id="root"></div>
 
     <script>
-      // Global error hook to prevent silent blank screens before React mounts
+      function dismissPreloaderNow() {
+        var el = document.getElementById('app-preloader');
+        if (el) {
+          el.style.opacity = '0';
+          el.style.pointerEvents = 'none';
+          setTimeout(function() { el.remove(); }, 300);
+        }
+      }
+
+      // Show manual skip button if loading takes more than 1.5 seconds
+      setTimeout(function() {
+        var btn = document.getElementById('preloader-fail-btn');
+        if (btn) btn.style.display = 'block';
+      }, 1500);
+
+      // Automatic fail-safe: Force dismiss after 2.5s maximum to NEVER leave user stuck on loading
+      setTimeout(dismissPreloaderNow, 2500);
+
+      // Global error hook
       window.addEventListener('error', function(e) {
-        console.error('Captured window error:', e);
+        console.error('App init notice:', e);
         var errBox = document.getElementById('preloader-error-box');
         if (errBox) {
           errBox.style.display = 'block';
-          errBox.innerHTML = '<strong>Application Initialization Notice:</strong><br/>' + 
-            (e.message || 'An unexpected script error occurred.') +
-            '<br/><button onclick="location.reload()" style="margin-top:10px;padding:6px 14px;background:#e11d48;color:white;border:none;border-radius:6px;cursor:pointer;">Reload Website</button>';
+          errBox.innerHTML = '<strong>Initialization Notice:</strong> ' + (e.message || 'Script notice') +
+            '<br/><button onclick="dismissPreloaderNow()" style="margin-top:8px;padding:4px 10px;background:#38bdf8;color:#000;border:none;border-radius:4px;cursor:pointer;font-weight:bold;font-size:11px;">Proceed to App</button>';
         }
       });
     </script>

@@ -53,14 +53,18 @@ export const BlankScreenFixer: React.FC<Props> = ({ project }) => {
       title: 'Repository Subpath & Base URL Resolution',
       category: 'Critical',
       status: 'pass',
-      cause: 'Because your website URL is saipratap-ux.github.io/OWN-Free-hosting-and-create-website/, absolute paths like /styles.css attempt to load from the root domain instead of your repository subfolder, resulting in 404 Not Found and a blank white screen.',
-      solution: 'Configure base: "/OWN-Free-hosting-and-create-website/" in vite.config.ts or use relative paths like ./styles.css and <base href="./" /> in index.html.',
+      cause: 'Because your website URL is saipratap09-blip.github.io/Own-created-website-to-free-hosting/, absolute paths like /styles.css attempt to load from the root domain instead of your repository subfolder, resulting in 404 Not Found and a stuck or blank screen.',
+      solution: 'Configure base: "./" or base: "/Own-created-website-to-free-hosting/" in vite.config.ts and use relative paths like ./styles.css and <base href="./" /> in index.html.',
       codeSnippet: `// vite.config.ts
 export default defineConfig({
-  base: "/OWN-Free-hosting-and-create-website/",
+  base: './', // Or: '/Own-created-website-to-free-hosting/'
   plugins: [react(), tailwindcss()],
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+  }
 });`,
-      details: 'PASSED in SaipratapS❤️C: All generated bundles, previews, and zip exports include <base href="./"> and relative references.',
+      details: 'PASSED in SaipratapS❤️C: All generated bundles, previews, and zip exports include relative base "./" and relative references.',
     },
     {
       id: 'check-index-root',

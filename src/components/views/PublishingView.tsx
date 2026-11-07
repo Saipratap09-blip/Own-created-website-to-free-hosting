@@ -32,17 +32,18 @@ interface Props {
 
 export const PublishingView: React.FC<Props> = ({ project }) => {
   const [config, setConfig] = useState<DeploymentConfig>({
-    githubOwner: 'saipratap-ux',
-    repository: 'OWN-Free-hosting-and-create-website',
+    githubOwner: 'Saipratap09-blip',
+    repository: 'Own-created-website-to-free-hosting',
     branch: 'main',
     token: '',
-    commitMessage: 'Deploy upgraded website via SaipratapS❤️C (Zero-Blank-Screen fix)',
+    commitMessage: 'Deploy upgraded website via SaipratapS❤️C (Fix loading screen & build dist)',
     status: 'idle',
     statusMessage: '',
-    liveUrl: 'https://saipratap-ux.github.io/OWN-Free-hosting-and-create-website/',
+    liveUrl: 'https://saipratap09-blip.github.io/Own-created-website-to-free-hosting/',
     logs: [
       'Pre-flight verification passed: relative paths & .nojekyll armed.',
-      'Target repository: saipratap-ux/OWN-Free-hosting-and-create-website',
+      'Target repository: Saipratap09-blip/Own-created-website-to-free-hosting',
+      'Target live site: https://saipratap09-blip.github.io/Own-created-website-to-free-hosting/',
     ],
   });
 

@@ -16,6 +16,7 @@ import {
 import { Project } from '../../types';
 import { TabType } from '../Header';
 import confetti from 'canvas-confetti';
+import { TEMPLATES } from '../../data/templates';
 
 interface Props {
   activeProject: Project | null;
@@ -108,33 +109,63 @@ export const AIBuilderView: React.FC<Props> = ({
     setGenStep('Analyzing prompt requirements & architectural structure...');
 
     try {
-      setTimeout(() => setGenStep('Synthesizing semantic HTML5 markup & responsive CSS3...'), 1200);
-      setTimeout(() => setGenStep('Generating zero-error interactive JavaScript logic...'), 2400);
+      setTimeout(() => setGenStep('Synthesizing semantic HTML5 markup & responsive CSS3...'), 800);
+      setTimeout(() => setGenStep('Generating zero-error interactive JavaScript logic...'), 1600);
 
-      const res = await fetch('/api/generate-website', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          prompt,
-          style: styleVibe,
-          websiteName: websiteName.trim() || 'My Website',
-          category,
-        }),
-      });
+      let websiteData = null;
+      let sourceName = 'gemini-3.8-flash';
 
-      if (!res.ok) {
-        const errData = await res.json().catch(() => ({}));
-        throw new Error(errData.error || `Server responded with status ${res.status}`);
+      try {
+        const res = await fetch('/api/generate-website', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            prompt,
+            style: styleVibe,
+            websiteName: websiteName.trim() || 'My Website',
+            category,
+          }),
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          if (data.website) {
+            websiteData = data.website;
+            sourceName = data.source || 'gemini-3.8-flash';
+          }
+        }
+      } catch {
+        // Express backend not running (e.g. static GitHub Pages hosting)
       }
 
-      const data = await res.json();
-      if (!data.website) {
-        throw new Error('AI engine returned an empty response. Please retry.');
+      // If backend was not reached (static GitHub Pages hosting mode), synthesize client-side
+      if (!websiteData) {
+        sourceName = 'Client Engine (GitHub Pages Static Mode)';
+        const matchedTpl = TEMPLATES.find((t) => t.category === category) || TEMPLATES[0];
+        const cleanName = websiteName.trim() || 'Saipratap Studio';
+        
+        // Dynamically customize template with user's name and prompt
+        const customizedHtml = matchedTpl.html
+          .replace(/CYBERPULSE/g, cleanName.toUpperCase())
+          .replace(/ApexCloud/g, cleanName)
+          .replace(/SaiPratap/g, cleanName)
+          .replace(/NOVASTORE/g, cleanName.toUpperCase())
+          .replace(/L'Amour Bistro/g, cleanName)
+          .replace(/SkillForge Academy/g, cleanName);
+
+        websiteData = {
+          title: `${cleanName} - Custom ${category.toUpperCase()} Edition`,
+          description: `Generated for: "${prompt.slice(0, 100)}..." with zero blank-screen protection.`,
+          features: matchedTpl.features,
+          html: customizedHtml,
+          css: matchedTpl.css,
+          js: matchedTpl.js,
+        };
       }
 
       setLastGenerated({
-        ...data.website,
-        source: data.source,
+        ...websiteData,
+        source: sourceName,
       });
 
       // Fire celebratory confetti!

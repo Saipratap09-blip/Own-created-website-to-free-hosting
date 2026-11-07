@@ -32,7 +32,7 @@ app.get('/api/health', (req, res) => {
     platform: 'SaipratapS❤️C Free Hosting & Website Builder',
     version: '2.0.0',
     geminiConfigured: !!process.env.GEMINI_API_KEY,
-    githubPagesTarget: 'saipratap-ux/OWN-Free-hosting-and-create-website',
+    githubPagesTarget: 'Saipratap09-blip/Own-created-website-to-free-hosting',
   });
 });
 

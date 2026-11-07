@@ -52,7 +52,7 @@ export const DashboardView: React.FC<Props> = ({
   };
 
   const handleExportZip = async (project: Project) => {
-    const blob = await exportDeployableZip(project, 'OWN-Free-hosting-and-create-website', 'saipratap-ux');
+    const blob = await exportDeployableZip(project, 'Own-created-website-to-free-hosting', 'Saipratap09-blip');
     downloadBlob(blob, `${project.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}-github-pages.zip`);
   };
 
@@ -77,7 +77,7 @@ export const DashboardView: React.FC<Props> = ({
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <span className="text-xs text-slate-400 flex items-center gap-1.5 font-medium">
                 <Globe2 className="w-3.5 h-3.5 text-sky-400" />
-                Target: <code className="text-sky-300 bg-slate-950/80 px-2 py-0.5 rounded border border-slate-800">saipratap-ux.github.io/OWN-Free-hosting-and-create-website/</code>
+                Target: <code className="text-sky-300 bg-slate-950/80 px-2 py-0.5 rounded border border-slate-800">saipratap09-blip.github.io/Own-created-website-to-free-hosting/</code>
               </span>
             </div>
           </div>
