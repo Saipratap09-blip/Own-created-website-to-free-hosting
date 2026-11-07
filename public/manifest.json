@@ -1,0 +1,26 @@
+{
+  "id": "/",
+  "name": "SaipratapS❤️C - Website Builder & Free Host",
+  "short_name": "SaipratapSC",
+  "description": "Create websites with AI, live editor, responsive preview, and free 1-click GitHub Pages hosting.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0a0b10",
+  "theme_color": "#0284c7",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e" />
+      <stop offset="100%" stop-color="#e11d48" />
+    </linearGradient>
+    <linearGradient id="codeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+  </defs>
+  <!-- Background Rounded Rect -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)" />
+  <rect width="480" height="480" x="16" y="16" rx="116" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="4" />
+  
+  <!-- Left Code Bracket < -->
+  <path d="M 140 180 L 70 256 L 140 332" fill="none" stroke="url(#codeGrad)" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Center Heart & S❤️C Symbol -->
+  <path d="M 256 180 C 230 135 160 145 160 210 C 160 270 256 345 256 345 C 256 345 352 270 352 210 C 352 145 282 135 256 180 Z" fill="url(#heartGrad)" filter="drop-shadow(0px 8px 24px rgba(244, 63, 94, 0.6))" />
+  
+  <!-- S Monogram inside Heart -->
+  <text x="256" y="270" font-family="system-ui, -apple-system, sans-serif" font-size="95" font-weight="900" fill="#ffffff" text-anchor="middle">S</text>
+
+  <!-- Right Code Bracket > -->
+  <path d="M 372 180 L 442 256 L 372 332" fill="none" stroke="url(#codeGrad)" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Cloud / Hosting arc at bottom -->
+  <path d="M 180 400 Q 256 380 332 400" fill="none" stroke="#38bdf8" stroke-width="12" stroke-linecap="round" />
+  <circle cx="256" cy="385" r="8" fill="#38bdf8" />
+</svg>

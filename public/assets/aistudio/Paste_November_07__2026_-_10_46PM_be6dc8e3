@@ -1,0 +1,591 @@
+# Complete PRD: SaipratapS❤️C Website Problem Fix & Recovery
+
+
+
+Critical issue: Blank white screen
+
+Goal: Fully working website
+
+
+
+I reviewed your screenshot of:
+
+[https://saipratap-ux.github.io/OWN-Free-hosting-and-create-website/](https://saipratap-ux.github.io/OWN-Free-hosting-and-create-website/?utm_source=chatgpt.com)
+
+## 1. Problems visible in your screenshot
+
+The browser successfully displays the website URL and browser tab title, but the entire website content area is blank white.
+
+This means the page is not rendering its expected interface.
+
+Observed problem
+
+[Blind test Multijoueurs - Quiz entre amis gratuit](https://images.openai.com/static-rsc-4/CfWqFShSIOeXsfpq-QrQfhGjo7SSF3Y_C021UaYDyWDDsJevjtZ4maEP02tyVEsKzSs2YtBmURITN0yj5KS5PGuADVRiZT4ZDMZ3QuyzrEw3UyldWnB5QNXJymO_1C5lCCATjNRNW0FwcMI8lmQ7crgzHinN5rE07DHfKpZwk4s?purpose=inline)
+
+[songtrivia.io](https://songtrivia.io/?utm_source=chatgpt.com)
+
+Failed
+
+Website interface is not visible.
+
+Visible
+
+Browser URL and tab title are present.
+
+The screenshot alone cannot identify the exact code failure. The following are the main technical causes that must be investigated.
+
+| Priority | Potential problem             | Required solution                 |
+| -------- | ----------------------------- | --------------------------------- |
+| Critical | JavaScript runtime error      | Fix exceptions and initialization |
+| Critical | Missing `index.html`          | Correct GitHub Pages entry point  |
+| Critical | Incorrect asset paths         | Fix repository subdirectory paths |
+| Critical | CSS or JS files returning 404 | Correct file references           |
+| High     | Incorrect build output folder | Deploy the actual build directory |
+| High     | React/Vite base-path error    | Configure the repository URL base |
+| High     | Broken routing                | Support GitHub Pages paths        |
+| Medium   | Third-party scripts failing   | Add error handling and fallbacks  |
+
+## 2. Root-cause investigation and fixes
+
+Your developer must investigate these issues in the following order.
+
+### A. GitHub Pages entry-point failure
+
+GitHub Pages requires an `index.html` file at the root of the selected publishing directory. The filename is case-sensitive.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://docs.github.com\&sz=32)
+
+GitHub Docs+1
+
+
+
+Required file structure:
+
+```
+OWN-Free-hosting-and-create-website/
+│
+├── index.html
+├── styles.css
+├── app.js
+├── assets/
+│   ├── logo.png
+│   └── images/
+├── .nojekyll
+└── .github/
+    └── workflows/
+        └── deploy.yml
+```
+
+### B. Incorrect file paths
+
+Because your website uses a repository URL rather than a root GitHub domain, asset paths must account for:
+
+`/OWN-Free-hosting-and-create-website/`
+
+Correct:
+
+```
+<link rel="stylesheet" href="./assets/styles.css">
+<script src="./assets/app.js" defer></script>
+```
+
+Incorrect:
+
+```
+<link rel="stylesheet" href="/assets/styles.css">
+<script src="/assets/app.js"></script>
+```
+
+If you use Vite, configure its base path:
+
+```
+export default {
+  base: "/OWN-Free-hosting-and-create-website/"
+};
+```
+
+Rebuild and redeploy after changing it.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://99helpers.com\&sz=32)
+
+99helpers.com+1
+
+
+
+### C. JavaScript errors
+
+Open your website in Chrome and follow these steps:
+
+1. Press `F12`.
+2. Open the Console tab.
+3. Refresh the website.
+4. Look for red error messages.
+5. Open the Network tab.
+6. Check whether JavaScript, CSS, fonts and image files return `404`, `403` or `500`.
+7. Record the exact error messages.
+
+A green deployment does not prove that the browser application itself works.
+
+# 3. Complete implementation-ready PRD
+
+# SaipratapS❤️C
+
+Website Recovery & Performance Upgrade
+
+Free platform
+
+Responsive website
+
+PWA-ready
+
+[AI Microtech Link - Generate Professional Websites in Minutes | Strategy-Aware AI](https://images.openai.com/static-rsc-4/2N4irmujpSHxwK2jOCqzsdaKksqftuUC20PxLe2D3kryaYFOhy2YfYKtzCWmolFDre2NHt9TPbhRHxh4IdYW6Akfw7Y7qTSejGxxxaFWq0XyQot6vMzrf6hmNuePDWxemtTOtuXdioMl8MhqmYpeMCNzqeWXVjO7hPSYtkwoYEw?purpose=inline)
+
+[2gz3d1g0siyq.space.minimax.io](https://2gz3d1g0siyq.space.minimax.io/?utm_source=chatgpt.com)
+
+Product specification · Version 2.0 · November 2026
+
+## 4. Product overview
+
+Product name: SaipratapS❤️C
+
+Existing website: `https://saipratap-ux.github.io/OWN-Free-hosting-and-create-website/`
+
+Main objective: Repair the existing website without losing its original features, design, content or project data.
+
+The upgraded website must allow users to:
+
+- Create websites using AI.
+- Create websites using templates.
+- Edit HTML, CSS and JavaScript.
+- Preview websites before publication.
+- Download complete website source code.
+- Publish websites through GitHub Pages.
+- Manage multiple website projects.
+- Install the platform as a PWA.
+- Access the platform on desktop, tablet and mobile.
+
+## 5. Main goals
+
+| Goal                | Expected result                    |
+| ------------------- | ---------------------------------- |
+| Fix blank screen    | Homepage renders correctly         |
+| Fix JavaScript      | No uncaught application errors     |
+| Fix assets          | CSS, images and scripts load       |
+| Fix navigation      | All buttons and pages work         |
+| Fix editor          | Changes appear in preview          |
+| Fix publishing      | Exported website deploys correctly |
+| Fix mobile          | Responsive on all screen sizes     |
+| Improve security    | No exposed API secrets             |
+| Improve performance | Fast initial loading               |
+
+## 6. Complete website pages and UI
+
+[Ai Agent Dashboard designs, themes, templates and downloadable graphic elements on Dribbble](https://images.openai.com/static-rsc-4/TYE0QrmYIB8okNJ8bHpJjQZDjgpm6s4aJOT95io6T_yT7SBtDPgQNpSTLE5Vu7XNrXD6mljCh3URxmPwCANZDjO4nXdE01vnY7hopPO8YusZaE-eE6tXggfnjc0DPh6SaUsxLYGIlKH_P4rkTYDl98Vb-_OJ4g0BNng19oUmCtY?purpose=inline)
+
+Page 1 — Dashboard
+
+- Welcome screen
+- Create website button
+- Recent websites
+- Project statistics
+- Quick actions
+- Workspace status
+
+[AI Workflow Dashboard UI/UX | SaaS Automation by Shahed Mahmud on Dribbble](https://images.openai.com/static-rsc-4/DhsbTQagLyosSRJYX-Mbuvku6nwKB6o9omCgAazAXG7wi8_xaeTBZMH7YLch09ycazfjqZHy19u8jxBG5kePDm6b0Kgh3CWxwiFBHwg5pTfjsIF7Vu7xTtmRyz1wjpqSTqLVA5cTmZtavVMUYDYI5kSDdbLW7poFfP9dcLwJSww?purpose=inline)
+
+Page 2 — AI Website Builder
+
+- Prompt input
+- Website name
+- Design selection
+- Generate website
+- Regenerate sections
+- Error recovery
+
+[Lovable AI vs Emergent AI (2026): Which AI App Builder Actually Wins?](https://images.openai.com/static-rsc-4/FzwCdfwTMQFv7YtvMINVqjSQviPAQDPtocXkRoMPm1P-cHN8D-k6VxAXF_EZvft_jgWKn6uVCNTqUiDfL9ZS3Fto35CD5FzsJZ7cMbAuhDO7s7Lujg221Lpd7WFK6567mJFnTGmPODXyNFFhhJRtU84-6ZuL3NPdfIHSfhtSaZs?purpose=inline)
+
+Page 3 — Website Editor
+
+- Visual editing
+- HTML/CSS/JS editor
+- Live preview
+- Undo and redo
+- Save changes
+- Download source
+
+[Webflow Website Builder](https://images.openai.com/static-rsc-4/livmk_8xDdc1ztoQRea3Gx_PVdVCkgSVG8dFxlPnM5xkfjYRSkXR9UcrJN0uuhxzZz4GqoSvBjlKbCkGGi8elUYkuNe9IFTigT2UtYg0ZJhd7EqlnKvg23NoM0LcwGxPFSDPEgQAwOTTa916YE7MR3wiSb7ivbr49hUFhE-3A1U?purpose=inline)
+
+Page 4 — Templates
+
+- Business templates
+- Portfolio templates
+- Education templates
+- Gaming templates
+- Shopping templates
+- Restaurant templates
+
+[Vite + react  で Github Pages にデプロイする方法](https://images.openai.com/static-rsc-4/olV7Qiy0J6zc6cZUuKgqV1WYK3JP1bjBzwQSXuB_mGWFfR5fTRAiy5GQDpo9jMs_FMVTvIbihOgCKD2QN6fX1Yw2HLxaY3vJ-9SDj9H5uLaGu7pvs6XBJLDTfIUG4Eq7vdwF6wgZ3ifogOvGMocX6Fp0DWO3TiJfofyIYFrwTLg?purpose=inline)
+
+Page 5 — Publishing Center
+
+- GitHub connection
+- Repository selection
+- Upload and deploy
+- Deployment status
+- Live website URL
+- Deployment error logs
+
+## 7. All buttons must work
+
+| Button         | Required action                    |
+| -------------- | ---------------------------------- |
+| Create Website | Opens website builder              |
+| Generate AI    | Generates website draft            |
+| Save           | Saves project                      |
+| Edit           | Opens selected project             |
+| Preview        | Displays live preview              |
+| Download       | Downloads website files            |
+| Delete         | Deletes after confirmation         |
+| Templates      | Opens template gallery             |
+| Connect GitHub | Starts secure GitHub authorization |
+| Publish        | Uploads authorized project         |
+| View Website   | Opens published URL                |
+| Settings       | Opens workspace settings           |
+| Install App    | Installs PWA when supported        |
+| Help           | Opens instructions                 |
+
+No decorative or non-functional buttons are permitted.
+
+## 8. Functional requirements
+
+### 8.1 AI website generation
+
+The AI builder must accept natural-language instructions such as:
+
+> Create a modern gaming website with a homepage, game gallery, login page, leaderboard and responsive mobile design.
+
+Expected workflow:
+
+1. User enters a prompt.
+2. Frontend validates the prompt.
+3. Backend sends the prompt to the configured AI model.
+4. AI generates structured website files.
+5. The system validates the generated files.
+6. User previews the website.
+7. User edits and saves the result.
+
+Important: A real AI integration requires a backend API. The browser must never contain private AI API keys.
+
+### 8.2 Website editor
+
+Required editor features:
+
+- HTML editing.
+- CSS editing.
+- JavaScript editing.
+- Live preview.
+- Desktop and mobile preview.
+- Undo and redo.
+- Autosave.
+- Manual save.
+- Download HTML.
+- Export ZIP containing all website files.
+
+### 8.3 GitHub publishing
+
+[GitHub Pages로 웹사이트 무료 호스팅하기 | Engineering Blog by Dale Seo](https://images.openai.com/static-rsc-4/otvVEPlquZbCmmVHFuoYugRllLGnsd1YDmTsMKPxvv_MeGgHmsilQsHpBQoAlJAY7xx0tTllDDfQb9U8nOhLUhJwhCIsz6gpVWYqQCMNnOucRAmhVmqVrCbKSIcczjKROaB8kJhYRx6csPbUDDsKxVHGqQwEr-IElfaR_2fqfHY?purpose=inline)
+
+[daleseo.com](https://daleseo.com/github-pages/?utm_source=chatgpt.com)
+
+The publishing system should work as follows:
+
+```
+User creates website
+        ↓
+User clicks Publish
+        ↓
+GitHub authorization
+        ↓
+Select repository
+        ↓
+Validate website files
+        ↓
+Upload or commit files
+        ↓
+Start GitHub Pages deployment
+        ↓
+Check deployment status
+        ↓
+Display live website URL
+```
+
+Requirements:
+
+- Use GitHub OAuth or a GitHub App.
+- Request minimum necessary permissions.
+- Store tokens securely on the backend.
+- Show deployment progress.
+- Detect failed deployments.
+- Allow users to retry.
+- Never display a fake success message.
+
+GitHub Pages is suitable for static websites. Dynamic server functionality requires separate hosting.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://docs.github.com\&sz=32)
+
+GitHub Docs+1
+
+
+
+## 9. Technical architecture
+
+| Layer          | Recommended technology                |
+| -------------- | ------------------------------------- |
+| Frontend       | React + TypeScript                    |
+| Styling        | Tailwind CSS                          |
+| Build tool     | Vite                                  |
+| Code editor    | Monaco Editor                         |
+| Backend        | Node.js + Express                     |
+| Database       | PostgreSQL                            |
+| Authentication | Supabase Auth                         |
+| AI integration | Gemini API or another supported model |
+| File storage   | S3-compatible storage                 |
+| Deployment     | GitHub Pages                          |
+| Automation     | GitHub Actions                        |
+| PWA            | Web App Manifest + Service Worker     |
+
+### Recommended architecture
+
+\#chatgpt-mermaid-\_r_if\_{font-family:-apple-system-body,ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";font-size:16px;fill:rgb(13, 13, 13);}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#chatgpt-mermaid-\_r_if\_ .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#chatgpt-mermaid-\_r_if\_ .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#chatgpt-mermaid-\_r_if\_ .error-icon{fill:rgb(243, 243, 243);}#chatgpt-mermaid-\_r_if\_ .error-text{fill:rgb(13, 13, 13);stroke:rgb(13, 13, 13);}#chatgpt-mermaid-\_r_if\_ .edge-thickness-normal{stroke-width:1px;}#chatgpt-mermaid-\_r_if\_ .edge-thickness-thick{stroke-width:3.5px;}#chatgpt-mermaid-\_r_if\_ .edge-pattern-solid{stroke-dasharray:0;}#chatgpt-mermaid-\_r_if\_ .edge-thickness-invisible{stroke-width:0;fill:none;}#chatgpt-mermaid-\_r_if\_ .edge-pattern-dashed{stroke-dasharray:3;}#chatgpt-mermaid-\_r_if\_ .edge-pattern-dotted{stroke-dasharray:2;}#chatgpt-mermaid-\_r_if\_ .marker{fill:rgb(143, 143, 143);stroke:rgb(143, 143, 143);}#chatgpt-mermaid-\_r_if\_ .marker.cross{stroke:rgb(143, 143, 143);}#chatgpt-mermaid-\_r_if\_ svg{font-family:-apple-system-body,ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";font-size:16px;}#chatgpt-mermaid-\_r_if\_ p{margin:0;}#chatgpt-mermaid-\_r_if\_ .label{font-family:-apple-system-body,ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";color:rgb(13, 13, 13);}#chatgpt-mermaid-\_r_if\_ .cluster-label text{fill:rgb(13, 13, 13);}#chatgpt-mermaid-\_r_if\_ .cluster-label span{color:rgb(13, 13, 13);}#chatgpt-mermaid-\_r_if\_ .cluster-label span p{background-color:transparent;}#chatgpt-mermaid-\_r_if\_ .label text,#chatgpt-mermaid-\_r_if\_ span{fill:rgb(13, 13, 13);color:rgb(13, 13, 13);}#chatgpt-mermaid-\_r_if\_ .node rect,#chatgpt-mermaid-\_r_if\_ .node circle,#chatgpt-mermaid-\_r_if\_ .node ellipse,#chatgpt-mermaid-\_r_if\_ .node polygon,#chatgpt-mermaid-\_r_if\_ .node path{fill:rgb(222, 234, 251);stroke:rgb(83, 154, 248);stroke-width:1px;}#chatgpt-mermaid-\_r_if\_ .rough-node .label text,#chatgpt-mermaid-\_r_if\_ .node .label text,#chatgpt-mermaid-\_r_if\_ .image-shape .label,#chatgpt-mermaid-\_r_if\_ .icon-shape .label{text-anchor:middle;}#chatgpt-mermaid-\_r_if\_ .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#chatgpt-mermaid-\_r_if\_ .rough-node .label,#chatgpt-mermaid-\_r_if\_ .node .label,#chatgpt-mermaid-\_r_if\_ .image-shape .label,#chatgpt-mermaid-\_r_if\_ .icon-shape .label{text-align:center;}#chatgpt-mermaid-\_r_if\_ .node.clickable{cursor:pointer;}#chatgpt-mermaid-\_r_if\_ .root .anchor path{fill:rgb(143, 143, 143)!important;stroke-width:0;stroke:rgb(143, 143, 143);}#chatgpt-mermaid-\_r_if\_ .arrowheadPath{fill:rgb(143, 143, 143);}#chatgpt-mermaid-\_r_if\_ .edgePath .path{stroke:rgb(143, 143, 143);stroke-width:1px;}#chatgpt-mermaid-\_r_if\_ .flowchart-link{stroke:rgb(143, 143, 143);fill:none;}#chatgpt-mermaid-\_r_if\_ .edgeLabel{background-color:rgb(252, 252, 252);text-align:center;}#chatgpt-mermaid-\_r_if\_ .edgeLabel p{background-color:rgb(252, 252, 252);}#chatgpt-mermaid-\_r_if\_ .edgeLabel rect{opacity:0.5;background-color:rgb(252, 252, 252);fill:rgb(252, 252, 252);}#chatgpt-mermaid-\_r_if\_ .labelBkg{background-color:rgba(252, 252, 252, 0.5);}#chatgpt-mermaid-\_r_if\_ .cluster rect{fill:rgb(243, 243, 243);stroke:rgba(0, 0, 0, 0.1);stroke-width:1px;}#chatgpt-mermaid-\_r_if\_ .cluster text{fill:rgb(13, 13, 13);}#chatgpt-mermaid-\_r_if\_ .cluster span{color:rgb(13, 13, 13);}#chatgpt-mermaid-\_r_if\_ div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:-apple-system-body,ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";font-size:12px;background:rgb(243, 243, 243);border:1px solid rgba(0, 0, 0, 0.1);border-radius:2px;pointer-events:none;z-index:100;}#chatgpt-mermaid-\_r_if\_ .flowchartTitleText{text-anchor:middle;font-size:18px;fill:rgb(13, 13, 13);}#chatgpt-mermaid-\_r_if\_ rect.text{fill:none;stroke-width:0;}#chatgpt-mermaid-\_r_if\_ .icon-shape,#chatgpt-mermaid-\_r_if\_ .image-shape{background-color:rgb(252, 252, 252);text-align:center;}#chatgpt-mermaid-\_r_if\_ .icon-shape p,#chatgpt-mermaid-\_r_if\_ .image-shape p{background-color:rgb(252, 252, 252);padding:2px;}#chatgpt-mermaid-\_r_if\_ .icon-shape .label rect,#chatgpt-mermaid-\_r_if\_ .image-shape .label rect{opacity:0.5;background-color:rgb(252, 252, 252);fill:rgb(252, 252, 252);}#chatgpt-mermaid-\_r_if\_ .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#chatgpt-mermaid-\_r_if\_ .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#chatgpt-mermaid-\_r_if\_ .node .neo-node{stroke:rgb(83, 154, 248);}#chatgpt-mermaid-\_r_if\_ [data-look="neo"].node rect,#chatgpt-mermaid-\_r_if\_ [data-look="neo"].cluster rect,#chatgpt-mermaid-\_r_if\_ [data-look="neo"].node polygon{stroke:url(#chatgpt-mermaid-\_r_if\_-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#chatgpt-mermaid-\_r_if\_ [data-look="neo"].swimlane.cluster rect{filter:none;}#chatgpt-mermaid-\_r_if\_ [data-look="neo"].node path{stroke:url(#chatgpt-mermaid-\_r_if\_-gradient);stroke-width:1px;}#chatgpt-mermaid-\_r_if\_ [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#chatgpt-mermaid-\_r_if\_ [data-look="neo"].node .neo-line path{stroke:rgb(83, 154, 248);filter:none;}#chatgpt-mermaid-\_r_if\_ [data-look="neo"].node circle{stroke:url(#chatgpt-mermaid-\_r_if\_-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#chatgpt-mermaid-\_r_if\_ [data-look="neo"].node circle .state-start{fill:#000000;}#chatgpt-mermaid-\_r_if\_ [data-look="neo"].icon-shape .icon{fill:url(#chatgpt-mermaid-\_r_if\_-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#chatgpt-mermaid-\_r_if\_ [data-look="neo"].icon-shape .icon-neo path{stroke:url(#chatgpt-mermaid-\_r_if\_-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#chatgpt-mermaid-\_r_if\_ .node text{font-size:14px;font-weight:600;letter-spacing:normal;fill:rgb(0, 79, 153);}#chatgpt-mermaid-\_r_if\_ .edgeLabels text{font-size:13px;font-weight:600;letter-spacing:-0.08px;fill:rgb(0, 79, 153);}#chatgpt-mermaid-\_r_if\_ .node tspan[font-weight="normal"],#chatgpt-mermaid-\_r_if\_ .edgeLabels tspan[font-weight="normal"]{font-weight:600;}#chatgpt-mermaid-\_r_if\_ .edgeLabel .label rect{opacity:1;rx:13px;ry:13px;fill:rgb(245, 250, 255);stroke:rgb(206, 219, 229);stroke-width:1px;}#chatgpt-mermaid-\_r_if\_ .node rect,#chatgpt-mermaid-\_r_if\_ .node circle,#chatgpt-mermaid-\_r_if\_ .node ellipse,#chatgpt-mermaid-\_r_if\_ .node polygon,#chatgpt-mermaid-\_r_if\_ .node path{fill:rgb(229, 243, 255);stroke:rgba(0, 0, 0, 0.1);stroke-width:1px;}#chatgpt-mermaid-\_r_if\_ .node rect{rx:16px;ry:16px;}#chatgpt-mermaid-\_r_if\_ .mermaid-decision .label-container{fill:rgb(245, 250, 255);stroke:rgb(206, 219, 229);stroke-dasharray:2,2;}#chatgpt-mermaid-\_r_if\_ .edgePaths .flowchart-link{stroke:rgb(143, 143, 143);stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;}#chatgpt-mermaid-\_r_if\_ .marker{fill:rgb(143, 143, 143);stroke:rgb(143, 143, 143);}#chatgpt-mermaid-\_r_if\_ :root{--mermaid-font-family:-apple-system-body,ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";}User BrowserReact FrontendWebsite BuilderLive PreviewBackend APIAI ProviderAuthenticationDatabaseGitHub APIGitHub RepositoryGitHub ActionsGitHub Pages Website
+
+## 10. Blank-screen prevention system
+
+This is the most important upgrade.
+
+The website must include:
+
+Loading screen
+
+Show a branded loading screen while application modules initialize.
+
+Error boundary
+
+If a component fails, show an error page instead of an entirely white screen.
+
+Missing-file detection
+
+Check critical resources and display useful diagnostic information.
+
+Fallback interface
+
+If AI services are unavailable, users should still be able to create websites using templates.
+
+Network recovery
+
+Provide retry controls when network requests fail.
+
+Deployment monitoring
+
+Check the actual published website after deployment, not just whether the build succeeded.
+
+Example:
+
+```
+window.addEventListener("error", (event) => {
+  console.error("Application error:", event.message);
+});
+
+window.addEventListener("unhandledrejection", (event) => {
+  console.error("Async application error:", event.reason);
+});
+```
+
+These handlers assist diagnosis; they must be combined with React error boundaries, logging and proper error recovery.
+
+## 11. Security and reliability
+
+- Validate uploaded files.
+- Sanitize user-generated HTML where applicable.
+- Isolate website previews in sandboxed iframes.
+- Protect authentication tokens.
+- Apply backend rate limits.
+- Validate API requests.
+- Prevent unauthorized repository publishing.
+- Add database backups.
+- Provide project recovery.
+- Avoid exposing private credentials.
+- Use HTTPS.
+- Apply appropriate Content Security Policy rules.
+
+## 12. Mobile and PWA requirements
+
+[Diseño de Página Web en Lima, Perú: ¿Por Qué Elegir un ...](https://images.openai.com/static-rsc-4/olIazLwGkiYiIQ6PsGFVfwLDj0Owo2ZbzKXpMwenZUhSXHFmVD6DwY0KPKObzo6ySe3OTCafaZuEmoOFNsdySiT2SxqOHdl6HnlR-AR7lcN82eWDxBfUAu0ku35V8xgVnRx7uXU-UP4NX0veclVcoUeDQ1fGAlcDVfOm2G2chTo?purpose=inline)
+
+[Irish. - No Code Website Builder by Rizal® for Nija Works on Dribbble](https://images.openai.com/static-rsc-4/_kEOjAIt86HmXA4YUGn_FKRS5-gKCWtsg7Qf2Bfiplel7SeuK8tZNLBmlIErmGqqu3aTHWAwHaXEk7JPAIGYRJdL9sANtvj1NwnMScFhMlhJn-JjBjDx27pKRvxZk77BA2Ztv2vgMnVWameN3weKll5Mnle9mY061L8-OH0Qg_s?purpose=inline)
+
+[Online Store Builder | Create an Ecommerce Website for Free GoDaddy](https://images.openai.com/static-rsc-4/NFHR4fv99bNQq3HCt7SgfEJfJqvAPsiyj_JcFEol8xQbnjbX7tvg6fbwkfl-BJ9QvpHq9uEdjH8tQ7Qex_fCGXyd8NhibBgDuCKWwmxq195rsJ3uWsjx7RvB6d0dCud0Ls2U_OULFZHI8DosdThuE7K_WoZufmP7Zo884SFkR2w?purpose=inline)
+
+10
+
+The platform must support:
+
+- Android phones.
+- iPhones.
+- Tablets.
+- Windows computers.
+- Desktop browsers.
+
+PWA features:
+
+- Install app option.
+- App icon and splash screen.
+- Offline fallback page.
+- Cached static resources.
+- Automatic update notifications.
+- Responsive touch controls.
+
+The app should not claim that AI generation or publishing works offline.
+
+## 13. Testing and quality assurance
+
+Every feature must pass testing before release.
+
+| Test              | Pass condition                           |
+| ----------------- | ---------------------------------------- |
+| Homepage          | Loads without blank screen               |
+| Navigation        | Every page opens                         |
+| AI builder        | Handles success and errors               |
+| Editor            | Changes appear in preview                |
+| Saving            | Project survives refresh                 |
+| Download          | Exported files open correctly            |
+| GitHub publishing | Live deployment verified                 |
+| Mobile            | No horizontal overflow                   |
+| PWA               | Installation works on supported browsers |
+| Security          | No private keys in frontend              |
+| Recovery          | Errors show useful messages              |
+
+### Mandatory browser testing
+
+Test these conditions:
+
+1. First-time visitor.
+2. Returning visitor.
+3. Slow internet connection.
+4. Offline connection.
+5. Invalid AI API response.
+6. Missing JavaScript file.
+7. Missing CSS file.
+8. Empty project.
+9. Large website project.
+10. Failed GitHub deployment.
+
+## 14. Deployment and recovery plan
+
+Phase 1 — Diagnose
+
+- Inspect repository structure.
+- Inspect `index.html`.
+- Check browser Console and Network.
+- Check GitHub Actions logs.
+- Identify the exact blank-screen cause.
+
+Phase 2 — Repair
+
+- Correct asset paths.
+- Correct build configuration.
+- Fix JavaScript errors.
+- Repair routing.
+- Restore missing UI components.
+
+Phase 3 — Upgrade
+
+- Complete website editor.
+- Complete AI integration.
+- Add GitHub publishing.
+- Add authentication and storage.
+- Implement PWA.
+
+Phase 4 — Test
+
+- Run functional tests.
+- Run mobile tests.
+- Run security checks.
+- Verify production build.
+
+Phase 5 — Publish
+
+- Upload corrected source.
+- Run GitHub Actions.
+- Verify the deployed URL.
+- Test all major user journeys.
+
+## 15. Final acceptance criteria
+
+Release requirements
+
+The project is considered complete only when:
+
+- Website no longer displays a blank white screen.
+- Existing branding and features are preserved.
+- All navigation and buttons work.
+- AI website builder generates usable drafts.
+- Editor supports working code changes.
+- Website preview works on desktop and mobile.
+- Projects save and reopen correctly.
+- Website exports successfully.
+- GitHub publishing completes successfully.
+- Published website URL opens correctly.
+- No critical JavaScript errors remain.
+- PWA installation works where supported.
+
+## 16. Instructions for your AI developer
+
+Copy this implementation instruction into Google AI Studio, Gemini or your coding agent.
+
+# CRITICAL WEBSITE REPAIR TASK — SAIPRATAPS❤️C
+
+Repair the existing website:
+
+[https://saipratap-ux.github.io/OWN-Free-hosting-and-create-website/](https://saipratap-ux.github.io/OWN-Free-hosting-and-create-website/)
+
+The website currently displays a completely blank white screen.
+
+IMPORTANT:
+
+1. Do not create an unrelated replacement website.
+2. First inspect the existing source code and repository.
+3. Preserve the existing branding, design, features and user experience.
+4. Identify the actual cause of the blank screen.
+5. Fix all missing files, incorrect paths, JavaScript errors, routing errors and build configuration issues.
+6. Configure the application correctly for the GitHub Pages repository subpath.
+7. Implement an error boundary, loading screen and recovery interface.
+8. Test every button, navigation link, editor function and website preview.
+9. Verify responsive design on mobile, tablet and desktop.
+10. Ensure project saving, HTML export and ZIP export work.
+11. Implement secure real AI integration through a backend.
+12. Implement GitHub publishing with secure authorization.
+13. Add PWA support.
+14. Never expose private API keys.
+15. Run production tests before deployment.
+
+DEPLOYMENT:\
+Repository: OWN-Free-hosting-and-create-website\
+GitHub owner: saipratap-ux\
+Hosting: GitHub Pages
+
+FINAL REQUIREMENT:\
+Do not report the project as complete simply because the build succeeds. Open and test the actual published website. Confirm that the homepage renders, resources load, navigation works and the main user journeys succeed.
+
+Deliver the corrected source code, deployment instructions, test results and a list of any remaining limitations.
+
+## 17. What I need to identify the exact problem
+
+I could inspect your screenshot, but I could not retrieve the live site's source through my browser inspection. Therefore, the exact failing file or JavaScript error is not yet confirmed.
+
+Please share your GitHub repository source files, preferably as a ZIP, or provide the repository's Code page link.
+
+Also, can you press `F12` on the blank website and share a screenshot of the Console tab? That will help pinpoint the actual failure instead of guessing.
+
+Official reference: [GitHub Pages troubleshooting](https://docs.github.com/en/pages/getting-started-with-github-pages/troubleshooting-404-errors-for-github-pages-sites?utm_source=chatgpt.com).
+
+I can then help prepare a corrected version of your existing website and its deployment workflow.

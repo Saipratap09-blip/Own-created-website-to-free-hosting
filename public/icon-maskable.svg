@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="mBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <linearGradient id="mHeart" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e" />
+      <stop offset="100%" stop-color="#e11d48" />
+    </linearGradient>
+    <linearGradient id="mCode" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+  </defs>
+  <!-- Full bleed background for maskable icon -->
+  <rect width="512" height="512" fill="url(#mBg)" />
+  
+  <!-- Safe zone graphics (within central 80%) -->
+  <g transform="translate(51.2, 51.2) scale(0.8)">
+    <path d="M 140 180 L 70 256 L 140 332" fill="none" stroke="url(#mCode)" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 256 180 C 230 135 160 145 160 210 C 160 270 256 345 256 345 C 256 345 352 270 352 210 C 352 145 282 135 256 180 Z" fill="url(#mHeart)" />
+    <text x="256" y="270" font-family="system-ui, -apple-system, sans-serif" font-size="95" font-weight="900" fill="#ffffff" text-anchor="middle">S</text>
+    <path d="M 372 180 L 442 256 L 372 332" fill="none" stroke="url(#mCode)" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 180 390 Q 256 370 332 390" fill="none" stroke="#38bdf8" stroke-width="12" stroke-linecap="round" />
+  </g>
+</svg>

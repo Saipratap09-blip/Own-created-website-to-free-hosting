@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>SaipratapS❤️C - Website Builder &amp; Free Host</title>
+    <meta name="description" content="Create websites with AI, live editor, responsive preview, and free 1-click GitHub Pages hosting with zero-blank-screen protection." />
+    
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:title" content="SaipratapS❤️C - Website Builder &amp; Free Host" />
+    <meta property="og:description" content="Create websites with AI, live editor, responsive preview, and free 1-click GitHub Pages hosting with zero-blank-screen protection." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- PWA & Mobile Web App Meta -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0284c7" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="SaipratapSC" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" href="/icon.svg" />
+
+    <!-- Blank Screen Prevention: Fallback CSS for Pre-Boot Screen -->
+    <style>
+      #app-preloader {
+        position: fixed;
+        inset: 0;
+        background: #090d16;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #e2e8f0;
+        transition: opacity 0.4s ease, visibility 0.4s ease;
+      }
+      .preloader-glow {
+        width: 68px;
+        height: 68px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+      .preloader-spinner {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 3px solid rgba(56, 189, 248, 0.15);
+        border-top-color: #38bdf8;
+        animation: spin 0.9s linear infinite;
+      }
+      .preloader-heart {
+        font-size: 26px;
+        animation: pulse 1.2s ease-in-out infinite;
+      }
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.15); }
+      }
+      .preloader-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 6px;
+      }
+      .preloader-sub {
+        font-size: 0.85rem;
+        color: #94a3b8;
+      }
+      #preloader-error-box {
+        display: none;
+        max-width: 500px;
+        margin: 20px 16px 0;
+        padding: 14px 18px;
+        background: #1e1115;
+        border: 1px solid #e11d48;
+        border-radius: 10px;
+        font-size: 0.85rem;
+        color: #fecdd3;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-950 text-slate-100 antialiased selection:bg-sky-500 selection:text-white">
+    <!-- Branded Loading Screen (Pre-Boot Shield to Prevent White Screen) -->
+    <div id="app-preloader">
+      <div class="preloader-glow">
+        <div class="preloader-spinner"></div>
+        <div class="preloader-heart">❤️</div>
+      </div>
+      <div class="preloader-title">SaipratapS❤️C</div>
+      <div class="preloader-sub">Initializing website builder &amp; hosting engine...</div>
+      <div id="preloader-error-box"></div>
+    </div>
+
+    <div id="root"></div>
+
+    <script>
+      // Global error hook to prevent silent blank screens before React mounts
+      window.addEventListener('error', function(e) {
+        console.error('Captured window error:', e);
+        var errBox = document.getElementById('preloader-error-box');
+        if (errBox) {
+          errBox.style.display = 'block';
+          errBox.innerHTML = '<strong>Application Initialization Notice:</strong><br/>' + 
+            (e.message || 'An unexpected script error occurred.') +
+            '<br/><button onclick="location.reload()" style="margin-top:10px;padding:6px 14px;background:#e11d48;color:white;border:none;border-radius:6px;cursor:pointer;">Reload Website</button>';
+        }
+      });
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

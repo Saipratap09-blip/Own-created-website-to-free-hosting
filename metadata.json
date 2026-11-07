@@ -1,0 +1,8 @@
+{
+  "name": "SaipratapS❤️C - Website Builder & Free Host",
+  "description": "Create websites using AI, interactive templates, visual code editing, live preview, and 1-click GitHub Pages hosting with built-in blank-screen protection.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
